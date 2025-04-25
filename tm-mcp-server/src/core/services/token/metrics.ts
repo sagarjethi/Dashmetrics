@@ -178,51 +178,76 @@ export class TokenMetricsService extends BaseService {
     });
   }
 
-  async getIndexHoldings(indexId: string) {
-    try {
-      return await this.client.indexHoldings.get({ index_id: indexId });
-    } catch (error) {
-      this.handleError(error, 'fetch index holdings');
+  async getIndexHoldings(index_id: string): Promise<any> {
+    if (!index_id) {
+      throw new AppError(400, 'Index ID is required');
     }
+    return this.handleRequest('/indices/holdings', { index_id });
   }
 
-  async getSectorIndicesHoldings(indexId: string) {
-    try {
-      return await this.client.sectorIndicesHoldings.get({ index_id: indexId });
-    } catch (error) {
-      this.handleError(error, 'fetch sector indices holdings');
+  async getSectorIndicesHoldings(index_id: string): Promise<any> {
+    if (!index_id) {
+      throw new AppError(400, 'Index ID is required');
     }
+    return this.handleRequest('/indices/sector/holdings', { index_id });
   }
 
-  async getIndicesPerformance(startDate: string, endDate: string) {
-    try {
-      return await this.client.indicesPerformance.get({ startDate, endDate });
-    } catch (error) {
-      this.handleError(error, 'fetch indices performance');
-    }
+  async getIndicesPerformance(
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
+    this.validateDateRange(startDate, endDate);
+    return this.handleRequest('/indices/performance', {
+      startDate,
+      endDate
+    });
   }
 
-  async getSectorIndicesPerformance(indexId: string, startDate: string, endDate: string) {
-    try {
-      return await this.client.sectorIndicesPerformance.get({ index_id: indexId, startDate, endDate });
-    } catch (error) {
-      this.handleError(error, 'fetch sector indices performance');
+  async getSectorIndicesPerformance(
+    index_id: string,
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
+    if (!index_id) {
+      throw new AppError(400, 'Index ID is required');
     }
+    this.validateDateRange(startDate, endDate);
+    return this.handleRequest('/indices/sector/performance', {
+      index_id,
+      startDate,
+      endDate
+    });
   }
 
-  async getIndexTransaction(indexId: string, startDate: string, endDate: string) {
-    try {
-      return await this.client.indexTransaction.get({ index_id: indexId, startDate, endDate });
-    } catch (error) {
-      this.handleError(error, 'fetch index transaction data');
+  async getIndexTransaction(
+    index_id: string,
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
+    if (!index_id) {
+      throw new AppError(400, 'Index ID is required');
     }
+    this.validateDateRange(startDate, endDate);
+    return this.handleRequest('/indices/transactions', {
+      index_id,
+      startDate,
+      endDate
+    });
   }
 
-  async getSectorIndexTransaction(indexId: string, startDate: string, endDate: string) {
-    try {
-      return await this.client.sectorIndexTransaction.get({ index_id: indexId, startDate, endDate });
-    } catch (error) {
-      this.handleError(error, 'fetch sector index transaction data');
+  async getSectorIndexTransaction(
+    index_id: string,
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
+    if (!index_id) {
+      throw new AppError(400, 'Index ID is required');
     }
+    this.validateDateRange(startDate, endDate);
+    return this.handleRequest('/indices/sector/transactions', {
+      index_id,
+      startDate,
+      endDate
+    });
   }
 } 
