@@ -35,29 +35,44 @@ Launch your own token with an AI-powered branding assistant, instant deployment,
 - **Sentiment Analysis:** Get real-time sentiment data from the crypto market
 - **Price Predictions:** AI forecasts based on historical data and current trends
 
-## 🔌 Token Metrics API Integration
+## 🔌 Token Metrics Integration
 
-Dashmetrics leverages the powerful Token Metrics API to provide professional-grade cryptocurrency analysis:
+### Token Metrics MCP Server
 
-- **Sentiment Analysis**: Track market sentiment for any token
-- **Token Information**: Get comprehensive data on thousands of cryptocurrencies
-- **Market Metrics**: Access overall market health indicators
-- **AI Reports**: Receive automated analysis for trading decisions
+The project includes a dedicated Token Metrics MCP (Model Context Protocol) Server that provides real-time cryptocurrency data and AI-driven insights:
 
-Our API integration provides real-time data and insights, allowing for smarter trading decisions and market analysis.
+#### Key Features
+- **Real-time Token Data**: Price, market cap, volume, and trends
+- **Trading Analysis**: Trader and investor grades with confidence scores
+- **Market Metrics**: Overall market health indicators and dominance tracking
+- **AI Reports**: Automated analysis and sentiment tracking
+
+#### Available Endpoints
+- `/api/tokens`: Detailed token information
+- `/api/trader-grades`: Professional trading signals
+- `/api/investor-grades`: Long-term investment analysis
+- `/api/market-metrics`: Market health indicators
+
+#### Integration Points
+The Token Metrics MCP Server is used throughout the platform:
+- Dashboard for real-time market data
+- Portfolio tracking for performance analysis
+- Betting marketplace for price verification
+- AI research tools for market insights
+- Meme coin analysis for launch pad
+
+For detailed documentation, visit: `http://localhost:3002/api-docs`
 
 ## 📋 Project Structure
 
-The project consists of two main components:
-
-- **Frontend**: Next.js application that provides the user interface
-- **Backend**: FastAPI application that handles data processing and API requests
+The project consists of three main components:
 
 ```bash
 dashmetrics/
 ├── frontend/            # Next.js frontend application
-├── backend/             # FastAPI backend application
-└── README.md            # Project documentation
+├── backend/            # FastAPI backend application
+├── tm-mcp-server/     # Token Metrics MCP Server
+└── README.md          # Project documentation
 ```
 
 ## 🚀 Getting Started
