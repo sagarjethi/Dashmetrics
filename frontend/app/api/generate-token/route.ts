@@ -1,12 +1,22 @@
 import { NextResponse } from "next/server"
 import OpenAI from "openai"
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+const apiKey = process.env.OPENAI_API_KEY
+const openai = apiKey ? new OpenAI({ apiKey }) : null
+
+type ResponseFormat = {
+  type: "json_object"
+}
 
 export async function POST(req: Request) {
   try {
+    if (!openai) {
+      return NextResponse.json(
+        { error: "Token generation is currently unavailable. Please check your OpenAI API key configuration." },
+        { status: 503 }
+      )
+    }
+
     const { input, type } = await req.json()
 
     // First, generate token details using GPT-4
@@ -23,7 +33,7 @@ export async function POST(req: Request) {
           content: `Generate a meme token based on this ${type === "tweet" ? "tweet" : "idea"}: ${input}`,
         },
       ],
-      response_format: { type: "json_object" },
+      response_format: { type: "json_object" } as ResponseFormat,
     })
 
     const tokenDetails = JSON.parse(completion.choices[0].message.content)

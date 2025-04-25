@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import GridBackground from "./GridBackground"
 import { SiteHeader } from "./site-header"
-import { Footer } from "./footer"
+import Footer from "./Footer"
 import Image from "next/image"
 
 interface ComingSoonPageProps {

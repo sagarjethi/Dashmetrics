@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SiteHeader } from "../../components/site-header"
-import { Footer } from "../../components/footer"
+import Footer from "../../components/Footer"
 import { Input } from "@/components/ui/input"
 import { Search, ArrowLeft } from "lucide-react"
 import GridBackground from "../../components/GridBackground"

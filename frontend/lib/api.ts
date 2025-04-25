@@ -78,13 +78,12 @@ const sampleResponses: Record<string, any> = {
 };
 
 class ApiClient {
-  private openai: OpenAI;
+  private openai: OpenAI | null;
 
   constructor() {
-    // Initialize OpenAI client with API key from environment variable
-    this.openai = new OpenAI({
-      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-    });
+    // Initialize OpenAI client with API key from environment variable if available
+    const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+    this.openai = apiKey ? new OpenAI({ apiKey }) : null;
   }
 
   async sendMessage(
@@ -92,6 +91,13 @@ class ApiClient {
     message: string,
     file?: File | null
   ): Promise<any[]> {
+    if (!this.openai) {
+      return [{
+        role: "assistant",
+        content: "Chat functionality is currently unavailable. Please check your OpenAI API key configuration."
+      }];
+    }
+
     try {
       // Call OpenAI API
       const completion = await this.openai.chat.completions.create({

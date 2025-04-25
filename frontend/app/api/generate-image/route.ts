@@ -1,12 +1,18 @@
 import { NextResponse } from "next/server"
 import OpenAI from "openai"
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+const apiKey = process.env.OPENAI_API_KEY
+const openai = apiKey ? new OpenAI({ apiKey }) : null
 
 export async function POST(req: Request) {
   try {
+    if (!openai) {
+      return NextResponse.json(
+        { error: "Image generation is currently unavailable. Please check your OpenAI API key configuration." },
+        { status: 503 }
+      )
+    }
+
     const { prompt } = await req.json()
 
     const response = await openai.images.generate({
