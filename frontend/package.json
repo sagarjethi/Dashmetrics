@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< Updated upstream
     "dev": "next dev",
     "dev:turbo": "next dev --turbo",
-=======
-    "dev": "next dev --turbopack",
->>>>>>> Stashed changes
+
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
