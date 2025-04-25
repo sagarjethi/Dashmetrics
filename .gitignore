@@ -1,0 +1,37 @@
+# Environment variables (cross-project)
+.env
+.env.*
+!.env.sample
+
+# OS specific files (cross-project)
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE and editor files (cross-project)
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+.vs/
+
+# Logs (cross-project)
+*.log
+logs/
+npm-debug.log*
+
+# Temporary files (cross-project)
+*.tmp
+*.bak
+.temp/
+.cache/
+
+# Local development overrides
+docker-compose.override.yml

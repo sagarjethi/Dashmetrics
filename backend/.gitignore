@@ -1,0 +1,151 @@
+# Environment variables
+.env
+.env.*
+!.env.sample
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.python-version
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+*.db
+app/logs/*
+!app/logs/.gitkeep
+dashmetrics.db
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.history
+*.sublime-workspace
+*.sublime-project
+
+# Temporary files
+/tmp/*
+!tmp/.gitkeep
+/output/*
+!output/.gitkeep
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Config files that might contain secrets
+OAI_CONFIG_LIST.json
+config.json
+secrets.yaml
+credentials.json
+
+# Generated files
+/static/*
+!static/.gitkeep
+/bin/*
+!bin/.gitkeep
+/media/*
+!media/.gitkeep
+/uploads/*
+!uploads/.gitkeep
+
+# Documentation
+/docs/_build/
+/docs/api/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+notebook/.ipynb_checkpoints/
+notebook/*checkpoint.ipynb
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# FastAPI
+__pycache__
+.pytest_cache
+.coverage
+htmlcov
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Other
+*.wav
+*.crt.pem
+*.pdf
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.pkl
+*.h5
+*.model
+.env.prod
+.env.dev
+.env.stage
